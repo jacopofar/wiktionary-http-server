@@ -1,2 +1,4 @@
 # Wiktextract dumps
 kaikki.org*json
+# output DB
+dict.db
