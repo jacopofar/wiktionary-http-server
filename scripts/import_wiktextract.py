@@ -3,7 +3,7 @@ import sqlite3
 from sys import argv
 
 if __name__ == "__main__":
-    connection = sqlite3.connect("dict.db")
+    connection = sqlite3.connect(argv[2])
     connection.execute(
         """CREATE TABLE words(
             word TEXT PRIMARY KEY,
