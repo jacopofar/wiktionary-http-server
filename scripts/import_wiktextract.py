@@ -15,10 +15,20 @@ if __name__ == "__main__":
         for line in fr:
             entry = json.loads(line)
             word = entry.pop("word")
+            if ' ' in word:
+                # TODO should these be ignored really?
+                continue
+            raw_definitions = []
+            for sense in entry['senses']:
+                if 'raw_glosses' in sense:
+                    raw_definitions += sense['raw_glosses']
+            if len(raw_definitions) == 0:
+                if 'etymology_text' in entry:
+                    raw_definitions.append(entry['etymology_text'])
             if word in rows:
-                rows[word].append(entry)
+                rows[word] += raw_definitions
             else:
-                rows[word] = [entry]
+                rows[word] = raw_definitions
 
     with connection:
         connection.executemany(
