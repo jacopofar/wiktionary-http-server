@@ -10,9 +10,9 @@ this does not require any dependency, it will create a `dict.db` file.
 
 ## Run the server
 
-You can use `make run-server`, which will do everything for you and create a virtualenv under `.venv`
+The server has no dependencies because it uses `SimpleHTTPServer`.
 
-Or create a virtualenv, install the dependencies in the `requirements.txt` file and run `sanic wiktserver.app`.
+Just run `python3 server.py`, it will look for the `dict.db` file and serve its content.
 
 Then, try visiting `http://localhost:8090/w/blabla` to get a JSON with the senses of the word `blabla`.
 
@@ -20,7 +20,7 @@ That's it.
 
 ## Wait, and the tests? The CI?
 
-Nothing, it's literally an endpoint and SQLLite. Maybe later will move to SimpleHTTPServer and avoid dependencies
+Nothing, it's literally an endpoint and SQLLite.
 
 ## License
 
