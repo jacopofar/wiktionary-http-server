@@ -7,12 +7,12 @@ from sanic.response import json
 from sanic import exceptions
 
 app = Sanic("wiktionary_app")
-app.ctx.connection = sqlite3.connect("dict_mini.db")
+app.ctx.connection = sqlite3.connect("dict.db")
 app.ctx.cur = app.ctx.connection.cursor()
 
 
 @app.get("/w/<word:str>")
-async def test(request, word: str):
+async def test(_request, word: str):
     entries = app.ctx.cur.execute(
             "SELECT entries from words where word = ?", (word,)
         ).fetchone()
