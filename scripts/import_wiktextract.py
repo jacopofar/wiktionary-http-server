@@ -12,14 +12,16 @@ if __name__ == "__main__":
     )
     with open(argv[1]) as fr:
         rows = {}
-        for line in fr:
+        for idx, line in enumerate(fr):
+            if idx % 100_000 == 0:
+                print(f'Read {idx} lines')
             entry = json.loads(line)
             word = entry.pop("word")
             if word in rows:
                 rows[word].append(entry)
             else:
                 rows[word] = [entry]
-
+    print('All definitions loaded, now writing to the DB')
     with connection:
         connection.executemany(
             """INSERT INTO words(word, entries)
