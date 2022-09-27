@@ -5,20 +5,22 @@ This is a very simple script to import a [Wiktextract dump](https://kaikki.org/d
 
 ## Create the database
 
-`python3 scripts/import_wiktextract.py your-downloaded-file.json`
+`python3 scripts/import_wiktextract.py your-downloaded-file.json dict.db`
 this does not require any dependency, it will create a `dict.db` file.
 
 ## Run the server
 
-Create a virtualenv, install the dependencies in the requirements.txt file and run `sanic wiktserver.app`. Or use `make run-server` to do that for you (the virtualenv will be created as `.venv`)
+You can use `make run-server`, which will do everything for you and create a virtualenv under `.venv`
 
-Then, try visiting `http://localhost:8000/w/blabla` to get a JSON with the senses of the word `blabla`.
+Or create a virtualenv, install the dependencies in the `requirements.txt` file and run `sanic wiktserver.app`.
+
+Then, try visiting `http://localhost:8090/w/blabla` to get a JSON with the senses of the word `blabla`.
 
 That's it.
 
 ## Wait, and the tests? The CI?
 
-Nope, it's fine as is thanks
+Nothing, it's literally an endpoint and SQLLite. Maybe later will move to SimpleHTTPServer and avoid dependencies
 
 ## License
 
