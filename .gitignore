@@ -1,4 +1,6 @@
 # Wiktextract dumps
 kaikki.org*json
-# output DB
-dict.db
+# output DB(s)
+*.db
+# compressed DB files
+*db.zst
